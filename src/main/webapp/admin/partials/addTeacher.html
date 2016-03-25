@@ -1,0 +1,22 @@
+<div class="col-md-8 col-md-offset-2">
+   <alert ng-repeat="alert in alerts" type="{{alert.statusType}}" close="closeAlert($index)">{{alert.status}}</alert>
+   <form role="form" ng-submit="submitAddTeacher(teacher_username,teacher_name,teacher_pwd)">
+      <div class="form-group">
+         <label for="username">教师工号:</label>
+         <input type="text" id="username" class="form-control" ng-model="teacher_username" autofocus placeholder="请输入教师工号"/>
+      </div>
+      <div class="form-group">
+         <label for="name">教师姓名:</label>
+         <input type="text" id="name" class="form-control" ng-model="teacher_name" placeholder="请输入教师姓名" />
+      </div>
+      <div class="form-group">
+         <label for="pwd">设置密码:</label>
+         <input type="password" id="pwd" class="form-control" ng-model="teacher_pwd" placeholder="请为该用户设置密码"/>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" ng-disabled="isTeaSave">保存</button>
+      <button type="button"  class="btn btn-default" ng-disabled="isTeaSave" ng-click="cleanTeacherInput()">取消</button>
+      <a class="ui button rightmost-pos" href="#/manage/show">返回</a>
+   </form>
+   
+</div>

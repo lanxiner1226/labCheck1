@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh" id="ng-app" ng-app="labCheck">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>603实验室签到管理系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Semantic UI CSS -->
+    <link href="css/semantic.min.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/labCheck.css" rel="stylesheet">
+    <link href="css/smoke.css" rel="stylesheet">
+
+    <script src="js/smoke.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/angular-touch.min.js"></script>
+    <script src="js/semantic.min.js"></script>
+
+    <script src="js/userjs/utils.js"></script>
+    <script src="js/userjs/app.js"></script>
+    <script src="js/userjs/controllers.js"></script>
+    <script src="js/userjs/services.js"></script>
+
+    <style>
+    .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+    </style>
+      <!--[if lte IE 8]>
+        <script src="js/json2.js"></script>
+        <script src="js/css3-mediaqueries.js"></script>
+        <script type='text/javascript' src="js/html5.js"></script>
+        <script type='text/javascript' src="js/respond.js"></script>
+      
+      <![endif]-->
+      <script>
+        if (!String.prototype.trim) {
+          String.prototype.trim = function () {
+            return this.replace(/^\s+|\s+$/g, '');
+          };
+        }
+        
+        // needed to make ng-include parse properly
+        document.createElement('alert');
+      </script>
+</head>
+
+<body ng-controller="WrapperController">
+
+    <div id="wrapper" ng-class="{'slide-out':boolChangeClass}">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="">实验室签到管理系统</a>
+                </li>
+                <li ng-repeat="item in navItems">
+                    <a href="#{{item.path}}" ng-click="toggleSidebar()" ng-class="{'active': isActive(item)}">{{item.title}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="content-header">
+                <div id="contentHeader" class="text-right">
+                    <a id="menu-toggle" href="" class="btn btn-default" ng-click="toggleSidebar()">
+                        <span class="sr-only">展现菜单</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a id="advertise" href="">欢迎使用本系统！</a> 您好，{{userInfo.name}}！
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="logout()" title="退出">
+                        <span class="sr-only">退出系统</span>
+                        <span class="glyphicon glyphicon-off"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Keep all page content within the page-content inset div! -->
+            <div id="pageContentView" ng-view class="row">
+         
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+
+
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh" id="ng-app" ng-app="labCheck">
+  <head>
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>实验室签到管理系统</title>
+    
+   <!-- Bootstrap css -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/login.css" rel="stylesheet">
+   
+   
+   <!-- Angular js -->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script src="js/angular-touch.min.js"></script>
+   
+   <script src="js/userjs/app.js"></script>
+   <script src="js/userjs/controllers.js"></script>
+   <script src="js/userjs/services.js"></script>
+   
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lte IE 8]>
+        <script src="js/json2.js"></script>
+        <script src="js/css3-mediaqueries.js"></script>
+        <script type='text/javascript' src="js/html5.js"></script>
+        <script type='text/javascript' src="js/respond.js"></script>
+      <![endif]-->
+       <script>
+        // needed to make ng-include parse properly
+        document.createElement('alert');          
+      </script>
+      
+</head>
+<body>
+    <div class="container" ng-controller="loginController">
+        <form role="form" class="form-signin" ng-submit="signin()">
+        <alert ng-repeat="alert in alerts" type="{{alert.statusType}}" close="closeAlert($index)">{{alert.status}}</alert>
+           <div class="text-center">
+              <h2 class="form-signin-heading">登录</h2>
+            </div>
+           
+           <input type="text" id="username" class="form-control" placeholder="教师工号" required autofocus>
+           <input type="password" id="pwd" class="form-control" placeholder="密码" required>
+           
+           <button type="submit" id="login-btn" class="btn btn-lg btn-primary btn-block">登录</button>
+           
+        </form>
+        
+    </div>
+</body>
+</html>

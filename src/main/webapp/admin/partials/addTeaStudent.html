@@ -1,0 +1,11 @@
+<div class="col-md-8 col-md-offset-2">
+     <div class="text-center">
+          <alert type="{{alert.statusType}}" ng-repeat="alert in alerts" close="closeAlert($index)">{{alert.status}}</alert>
+           <h3>为<strong>{{teacherName}}</strong>老师添加关联学生</h3>
+           <select id="select" ng-model="selectedStudent" 
+           ng-change="change(selectedStudent.id,selectedStudent.username)" 
+           ng-options="student.username + '  ' + student.name for student in allStudents">
+             
+           </select>
+     </div>
+</div>

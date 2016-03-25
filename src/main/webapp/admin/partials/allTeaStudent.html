@@ -1,0 +1,26 @@
+<div class="col-md-10 col-md-offset-1">
+   <div>
+       <a class="btn btn-info" ng-href="#/manage/addTeaStudent?teacherId={{teacherId}}&teacherName={{teacherName}}">为<strong>{{teacherName}}</strong>老师添加学生</a>
+   </div>
+   <table class="table table-hover">
+      <caption><strong>{{teacherName}}</strong>老师所管理学生信息列表</caption>
+      <thead>
+          <tr>
+              <th></th>
+              <th>学生学号</th>
+              <th>学生姓名</th>
+              <th>操作</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="teaStudent in teaStudents">
+             <td>{{$index+1}}</td>
+             <td>{{teaStudent.username}}</td>
+             <td>{{teaStudent.name}}</td>
+             <td>
+                <button type="button" class="btn btn-primary" ng-click="deleteRelation($index,teacherId,teaStudent.id)">解除关联</button>
+             </td>
+          </tr>
+      </tbody>
+   </table>
+</div>

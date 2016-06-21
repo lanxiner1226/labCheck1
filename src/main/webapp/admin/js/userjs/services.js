@@ -108,5 +108,15 @@ dataServices.factory("dataService",["$http",function($http){
 		return $http.post(recordUrlBase + "/getAllTeacherDayRecord");
 	}
 	
+	services.getRecords = function(userId){
+		return $http.post(recordUrlBase + "/getRecord",
+				{"user_id":userId});
+	}
+	services.getUserByName = function(name){
+		return $http.post(userUrlBase + "/getUserByName",
+				{"name":name});
+	}
+
+	
 	return services;
 }])

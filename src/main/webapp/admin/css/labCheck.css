@@ -241,3 +241,33 @@
 select{
 	min-width:350px;
 }
+
+//define
+.left{
+	width:40%;
+	float:left;
+}
+
+.buttonClick{
+	float:right;
+	height:34px;
+}
+.inputSpan{
+	width:30%;
+	float:right;
+}
+.btnHeight{
+	height:100%;
+}
+.formController{
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+}
+
+#inputText{
+	margin-bottom:3px;
+}
+#code{
+	margin-top:30px;
+	text-align:center;
+}

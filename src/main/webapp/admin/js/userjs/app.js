@@ -30,6 +30,10 @@ labCheck.config(["$routeProvider",function($routeProvider){
 	          when("/manage/addTeaStudent",{
 	        	  templateUrl:"partials/addTeaStudent.html",
 	        	  controller:"AddTeaStudentController"
+	          }).
+	          when("/barcode/show",{
+	        	  templateUrl:"partials/2DbarCode.html",
+	        	  controller:"BarCodeController"
 	          })
 	
 }])

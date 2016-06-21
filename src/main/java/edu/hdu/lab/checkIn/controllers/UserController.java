@@ -52,33 +52,30 @@ public class UserController {
 
 		return JsonUtils.createGson().toJson(resultMap);
 	}
- /*
+  //user define
 	@ResponseBody
-	@RequestMapping(value = "/user/me", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
-	public String aboutMe(@RequestParam("id") Integer id,
+	@RequestMapping(value = "/user/getUserByName", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	public String getUser(@RequestParam("name") String name,
 			HttpServletRequest request) {
 		// String username = request.getSession().getAttribute("username")
 		// .toString();
 		// String pwd = request.getSession().getAttribute("pwd").toString();
-
-		List<User> list = userService.getUser(id);
-		String resultMessage = "";
+          name = name.trim();
+          User user = new User();
+          user.setName(name);
+		List<User> list = userService.getUserByName(user);
+	    Map<String, Object> resultMap = new HashMap<String, Object>(2);
 		int resultCode = list == null ? 0 : list.size();
 		if (resultCode > 0) {
-			User user = list.get(0);
-			Address address = userService.getAddress(user.getAddressId());
-			System.out.println(address.toString());
-			user.setAddress(userService.getAddress(user.getAddressId())
-					.getLocation());
-			user.setPwd(null);
-			resultMessage = JsonUtils.createGson().toJson(user);
+		    
+		
+			resultMap.put("userInformation", list);
 
-		} else
-			resultMessage = WebUtils.generateResult(resultCode);
-
-		return resultMessage;
+		} 
+		resultMap.put("resultCode", resultCode);
+		return JsonUtils.createGson().toJson(resultMap);
 	}
-*/
+
 	
 	//user define
 	  @ResponseBody

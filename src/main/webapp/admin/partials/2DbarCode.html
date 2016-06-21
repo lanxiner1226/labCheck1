@@ -1,0 +1,9 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="center">
+      <label for="inputText">请输入要生成的二维码内容：</label>
+      <input id="inputText" type="text" class="form-control" ng-model="inputText" placeholder="请输入要生成的二维码内容"/>
+      <button type="button" class="btn btn-primary" ng-click="barCode(inputText)">生成二维码</button>
+      <div id="code">
+      </div>
+  </div>
+</div>

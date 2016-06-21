@@ -48,7 +48,8 @@ labCheckControllers.controller("WrapperController",
 	    	
 	    	$scope.navItems = [
 	    	  {path:"/manage/show",title:"管理"},
-	    	  {path:"/search/show",title:"查询签到记录"}
+	    	  {path:"/search/show",title:"查询签到记录"},
+	    	  {path:"/barcode/show",title:"二维码管理"}
 	    	                  ]
 	    	  //判断条目是否需要激活
 	        $scope.isActive = function(item) {
@@ -365,6 +366,74 @@ labCheckControllers.controller("SearchController",["$scope","dataService",
 			   div.innerHTML = table;
 		})
 	}
+	
+	
+	$scope.searchByName = function(username){
+		if(username != null && username !=""){
+			dataService.getUserByName(username).success(function(data){
+				
+				if(data.resultCode == 1){
+                  $scope.userId = data.userInformation[0].id;
+                 
+                  dataService.getRecords($scope.userId).success(function(dataSuccess){
+                	 
+                	  if(dataSuccess.resultCode == 1){
+                			var allrecords = dataSuccess.allrecords;
+                    	    var table = "<table class='table table-hover'>";
+    						table += "<caption><h3>单个用户历史签到记录列表</h3></caption>";
+    							table += "<thead>";
+    							table += "<tr>";
+    							table += "<th></th>";
+    						    table += "<th>姓名</th>";
+    						    table += "<th>打卡时间</th>";
+    						    table += "</tr>";
+    						    table += "</thead>"
+    						    table += "<tbody>"
+    						    	var count =  1;
+    						
+    						for(var i in allrecords){
+    							    var recordsDay = allrecords[i].records;
+    							  
+    								
+    								    for(var j in recordsDay){
+    								      table += "<tr>";
+    								      table += "<td>" + (count++) + "</td>";
+    								      table += "<td>" + username + "</td>";
+    								      table += "<td>" + recordsDay[j].recordTime + "</td>";
+    								      table += "</tr>";
+    								    	
+    								    }
+    								   
+    							    }
+    						
+    						     table += "</tbody>"
+    							 table += "</table>";
+    							 div.innerHTML = table;
+    					
+                	  }else{
+                		  
+                		  var p ="<br/><br/><h3 class='text-center' style='color:red'>该用户暂时没有签到记录！</h3>"
+                		  
+                		  div.innerHTML = p;
+                	  }
+					
+					
+				})
+					
+					
+					
+				}else{
+					 var p ="<br/><br/><h3 class='text-center' style='color:red'>您输入的用户不存在，请重新输入！</h3>"
+					 div.innerHTML = p;
+						 
+				}
+			})
+				
+			
+			
+	
+		}
+	}
 }])
 
 
@@ -463,7 +532,24 @@ angular.extend(this,$controller("BaseController",{$scope:$scope}));
     
 }])
 
-
+labCheckControllers.controller("BarCodeController",["$scope",
+		function($scope){
+	$scope.barCode = function(inputText){
+		if(inputText != null && inputText != ""){
+			$("#code").empty();
+			$("#code").qrcode({
+				render:"canvas",
+				width:200,
+				height:200,
+				text:inputText
+			});
+		}else{
+			$("#code").empty();
+		}
+		
+		
+	}
+}])
 
 labCheckControllers.controller("BaseController",["$scope",function($scope){
 	$scope.alerts = [];

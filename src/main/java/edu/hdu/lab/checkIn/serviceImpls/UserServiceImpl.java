@@ -99,6 +99,13 @@ public class UserServiceImpl implements UserService {
 		example.createCriteria().andRoleEqualTo(user.getRole());
 		return userMapper.selectByExample(example);
 	}
+//user define
+	@Override
+	public List<User> getUserByName(User user) {
+		UserExample example = new UserExample();
+		example.createCriteria().andNameEqualTo(user.getName());
+		return userMapper.selectByExample(example);
+	}
 
 
 }

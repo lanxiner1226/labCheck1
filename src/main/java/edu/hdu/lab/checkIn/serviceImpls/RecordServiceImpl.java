@@ -25,7 +25,7 @@ public class RecordServiceImpl implements RecordService {
 		RecordExample example = new RecordExample();
 		Date value1=new Date();
 		Date value2=new Date();
-		value2.setDate(value1.getDate()-1);
+		value2.setHours(0);
 		example.createCriteria().andUserIdEqualTo(user_id).andRecordTimeBetween(value2, value1);;
 		example.setOrderByClause("id desc");
 		List<Record> list = recordMapper.selectByExample(example);
@@ -54,14 +54,27 @@ public class RecordServiceImpl implements RecordService {
 	@Override
 	public List<Record> getRecords(Integer user_id) {
 		RecordExample example = new RecordExample();
-		Date value1=new Date();
-		Date value2=new Date();
-		value2.setDate(value1.getDate()-7);
-		example.createCriteria().andRecordTimeBetween(value2, value1);;
+//		Date value1=new Date();
+//		Date value2=new Date();
+//		value2.setDate(value1.getDate()-7);
+		example.createCriteria()
+//		.andRecordTimeBetween(value2, value1);
+		.andUserIdEqualTo(user_id);
 		example.setOrderByClause("id desc");
 		List<Record> list = recordMapper.selectByExample(example);
 		
 		return list;
 	}
+
+	@Override
+	public List<Record> getRecordsbyTime(Date date1, Date date2) {
+		RecordExample example = new RecordExample();
+		example.createCriteria().andRecordTimeBetween(date1, date2);
+		example.setOrderByClause("id desc");
+		List<Record> list = recordMapper.selectByExample(example);
+		return list;
+	}
+
+
 
 }

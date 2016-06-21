@@ -1,6 +1,17 @@
 <div class="col-md-10 col-md-offset-1">
-    <button class="search_button1 btn btn-info" type="button" ng-click="teachersRecord()">查询所有老师当天签到记录</button>
-    <button class="serch_button2 btn btn-info" type="button" ng-click="studentsRecord()">查询所有学生当天签到记录</button>
+    <div class="left">
+       <button class="search_button1 btn btn-info" type="button" ng-click="teachersRecord()">查询所有老师当天签到记录</button>
+       <button class="serch_button2 btn btn-info" type="button" ng-click="studentsRecord()">查询所有学生当天签到记录</button>
+    </div>
+    <div class="right">
+       
+        <span class="buttonClick">
+           <button class=" btnHeight btn btn-primary btn-sm" ng-click="searchByName(userName)">查询</button>
+        </span>
+         <span class="inputSpan">
+           <input type="text" class="form-control formController" ng-model="userName" placeholder="请输入要查询的用户姓名"/>
+        </span>
+     </div>
     <div id="table">
     </div>
 </div>

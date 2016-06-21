@@ -24,5 +24,7 @@ public interface UserService {
 	public int verifyUser(int id, String phonecode);
 	
 	public Address getAddress(int id);
+	//define
+	public List<User> getUserByName(User user);
 	
 }
